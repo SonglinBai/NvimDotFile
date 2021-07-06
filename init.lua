@@ -1,0 +1,5 @@
+require "keymappings"
+require "settings"
+require "plugins"
+require "colorscheme"
+require "lsp.lua-language-server"
