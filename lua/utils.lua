@@ -1,13 +1,24 @@
-local M = {}
+local function define_augroups(definitions)
+    for group_name, definition in pairs(definitions) do
+        vim.cmd('augroup ' .. group_name)
+        vim.cmd('autocmd!')
 
-function M.is_buffer_empty()
-    -- Check whether the current buffer is empty
-    return vim.fn.empty(vim.fn.expand '%:t') == 1
+        for _, def in pairs(definition) do
+            local command = table.concat(vim.tbl_flatten {'autocmd', def}, ' ')
+            vim.cmd(command)
+        end
+        vim.cmd('augroup END')
+    end
 end
 
-function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number of columns
-    return vim.fn.winwidth(0) / 2 > cols
-end
-
-return M
+-- ENABLE yank highlight
+define_augroups(
+{
+    general_settings = {
+        {
+            "TextYankPost",
+            "*",
+            "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})",
+        }
+    }
+})

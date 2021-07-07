@@ -69,17 +69,57 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["barbar.nvim"] = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.barbar\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\barbar.nvim"
+  },
   ["galaxyline.nvim"] = {
     config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0" },
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\galaxyline.nvim"
   },
+  ["gitsigns.nvim"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim"
+  },
+  hop = {
+    config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\hop"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim"
+  },
+  kommentary = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.kommentary\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\kommentary"
+  },
   ["nord-vim"] = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nord-vim"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.autopairs\frequire\0" },
+    load_after = {
+      ["nvim-compe"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-autopairs"
+  },
+  ["nvim-colorizer.lua"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-colorizer.lua"
+  },
   ["nvim-compe"] = {
+    after = { "nvim-autopairs" },
     after_files = { "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-compe\\after\\plugin\\compe.vim" },
+    config = { "\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.compe\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-compe"
@@ -89,10 +129,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvimtree\frequire\0" },
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0" },
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter"
   },
@@ -116,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim"
   },
+  ["quick-scope"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.quickscope\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\quick-scope"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim"
@@ -136,11 +183,43 @@ time([[Defining packer_plugins]], false)
 time([[Config for galaxyline.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0", "config", "galaxyline.nvim")
 time([[Config for galaxyline.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: quick-scope
+time([[Config for quick-scope]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.quickscope\frequire\0", "config", "quick-scope")
+time([[Config for quick-scope]], false)
+-- Config for: kommentary
+time([[Config for kommentary]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.kommentary\frequire\0", "config", "kommentary")
+time([[Config for kommentary]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.barbar\frequire\0", "config", "barbar.nvim")
+time([[Config for barbar.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvimtree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: hop
+time([[Config for hop]], true)
+try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop")
+time([[Config for hop]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe', 'vim-vsnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe', 'nvim-autopairs', 'vim-vsnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -1,5 +1,11 @@
+require "utils"
 require "keymappings"
 require "settings"
 require "plugins"
 require "colorscheme"
-require "lsp.lua-language-server"
+-- LSP
+-- require "lsp"
+-- require "lsp.lua-language-server"
+-- require "lsp.pyright"
+-- require "lsp.clangd"
+-- require "config.treesitter"
