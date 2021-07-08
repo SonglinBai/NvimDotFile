@@ -1,17 +1,17 @@
 -- TODO:Don't work on windows, fix later
-require 'nvim-treesitter.install'.compilers = { "clang.exe" }
-require'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.install".compilers = {"clang.exe"}
+require "nvim-treesitter.configs".setup {
   ensure_installed = {"cpp", "lua", "c", "json"},
   highlight = {
-    enable = true,
+    enable = true
   },
   incremental_selection = {
-      enable = true,
+    enable = true
   },
   indent = {
-      enable = true,
+    enable = true
   },
   autopairs = {
-      enable = true,
+    enable = true
   }
 }

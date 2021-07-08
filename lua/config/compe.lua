@@ -1,5 +1,5 @@
 vim.g.vsnip_snippet_dir = CONFIG_PATH .. "\\snippets\\"
-opt = {
+local opt = {
   enabled = true,
   autocomplete = true,
   debug = false,
@@ -7,13 +7,30 @@ opt = {
   preselect = "enable",
   throttle_time = 80,
   source_timeout = 200,
+  resolve_timeout = 800,
   incomplete_delay = 400,
   max_abbr_width = 100,
   max_kind_width = 100,
   max_menu_width = 100,
   documentation = true,
-
   source = {
+    path = {kind = "  "},
+    buffer = {kind = "  "},
+    calc = {kind = "  "},
+    vsnip = {kind = "  "},
+    nvim_lsp = {kind = "  "},
+    -- nvim_lua = {kind = "  "},
+    nvim_lua = false,
+    spell = {kind = "  "},
+    tags = false,
+    vim_dadbod_completion = true,
+    snippets_nvim = {kind = "  "},
+    -- ultisnips = {kind = "  "},
+    -- treesitter = {kind = "  "},
+    emoji = {kind = " ﲃ ", filetypes = {"markdown", "text"}}
+    -- for emoji press : (idk if that in compe tho)
+  }
+  --[[ source = {
     path = { kind = "   (Path)" },
     buffer = { kind = "   (Buffer)" },
     calc = { kind = "   (Calc)" },
@@ -29,7 +46,7 @@ opt = {
     -- treesitter = {kind = "  "},
     emoji = { kind = " ﲃ  (Emoji)", filetypes = { "markdown", "text" } },
     -- for emoji press : (idk if that in compe tho)
-  },
+  }, ]]
 }
 
 require("compe").setup(opt)
@@ -53,7 +70,7 @@ end
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", { 1 }) == 1 then
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
     return t "<Plug>(vsnip-expand-or-jump)"
   elseif check_back_space() then
     return t "<Tab>"
@@ -65,22 +82,20 @@ end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
     return t "<Plug>(vsnip-jump-prev)"
   else
     return t "<S-Tab>"
   end
 end
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
+-- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
 -- vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
-
-
+-- vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
+-- vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
+-- vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })

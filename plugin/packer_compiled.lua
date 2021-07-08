@@ -7,7 +7,7 @@ end
 
 vim.api.nvim_command('packadd packer.nvim')
 
-local no_errors = pcall(function()
+local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
@@ -74,8 +74,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\barbar.nvim"
   },
+  ["formatter.nvim"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.formatter\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\formatter.nvim"
+  },
   ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0" },
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lunarline\frequire\0" },
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\galaxyline.nvim"
   },
@@ -89,18 +94,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\hop"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim"
-  },
   kommentary = {
     config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.kommentary\frequire\0" },
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\kommentary"
   },
-  ["nord-vim"] = {
+  ["lspsaga.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nord-vim"
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspsaga.nvim"
+  },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvcode-color-schemes.vim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.autopairs\frequire\0" },
@@ -142,10 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons"
   },
-  ["onedark.vim"] = {
-    loaded = true,
-    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\onedark.vim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim"
@@ -163,13 +165,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\quick-scope"
   },
+  ["symbols-outline.nvim"] = {
+    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.outline\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim"
-  },
-  ["vim-one"] = {
-    loaded = true,
-    path = "C:\\Users\\bsl13\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-one"
   },
   ["vim-vsnip"] = {
     loaded = false,
@@ -179,42 +182,50 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0", "config", "nvim-colorizer.lua")
 time([[Config for nvim-colorizer.lua]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: quick-scope
-time([[Config for quick-scope]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.quickscope\frequire\0", "config", "quick-scope")
-time([[Config for quick-scope]], false)
--- Config for: kommentary
-time([[Config for kommentary]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.kommentary\frequire\0", "config", "kommentary")
-time([[Config for kommentary]], false)
--- Config for: barbar.nvim
-time([[Config for barbar.nvim]], true)
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.barbar\frequire\0", "config", "barbar.nvim")
-time([[Config for barbar.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvimtree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: hop
 time([[Config for hop]], true)
 try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop")
 time([[Config for hop]], false)
+-- Config for: kommentary
+time([[Config for kommentary]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.kommentary\frequire\0", "config", "kommentary")
+time([[Config for kommentary]], false)
+-- Config for: quick-scope
+time([[Config for quick-scope]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.quickscope\frequire\0", "config", "quick-scope")
+time([[Config for quick-scope]], false)
+-- Config for: symbols-outline.nvim
+time([[Config for symbols-outline.nvim]], true)
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.outline\frequire\0", "config", "symbols-outline.nvim")
+time([[Config for symbols-outline.nvim]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.formatter\frequire\0", "config", "formatter.nvim")
+time([[Config for formatter.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lunarline\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvimtree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config.barbar\frequire\0", "config", "barbar.nvim")
+time([[Config for barbar.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
@@ -227,5 +238,5 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
-  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: ".v:exception | echom "Please check your config for correctness" | echohl None')
+  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

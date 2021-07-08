@@ -4,8 +4,6 @@ require "settings"
 require "plugins"
 require "colorscheme"
 -- LSP
--- require "lsp"
--- require "lsp.lua-language-server"
--- require "lsp.pyright"
--- require "lsp.clangd"
--- require "config.treesitter"
+require "lsp"
+--a require "lsp.lua"
+-- TODO

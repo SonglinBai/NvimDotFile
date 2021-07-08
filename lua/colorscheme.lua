@@ -1,3 +1,2 @@
 -- Use one dark
-vim.cmd("colorscheme onedark")
-
+vim.cmd("colorscheme spacegray")
