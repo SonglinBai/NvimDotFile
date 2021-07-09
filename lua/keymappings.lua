@@ -4,21 +4,25 @@ vim.g.mapleader = " "
 -- Toggle search highlight
 vim.api.nvim_set_keymap("n", "<Leader>h", ":set hlsearch!<CR>", {noremap = true, silent = true})
 
+-- Use Ctrl-n/p to navigate in command mode
+vim.api.nvim_set_keymap("c", "<C-n>", "<down>", {noremap = true})
+vim.api.nvim_set_keymap("c", "<C-p>", "<up>", {noremap = true})
+
 -- Toggle file explorer
 vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
 
 -- Better window movemoment, ctrl+h/j/k/l
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {silent = true})
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", {silent = true})
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", {silent = true})
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {silent = true})
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {noremap = true, silent = true})
 
 -- Better visual indenting
 vim.api.nvim_set_keymap("v", "<", "<gv", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", ">", ">gv", {noremap = true, silent = true})
 
 -- use jk as ESC
-vim.api.nvim_set_keymap("i", "jk", "<ESC>", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("i", "jk", "<ESC>", {noremap = true, silent = true})
 
 -- Tab switch buffer, alt+number to specific buffer
 vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>", {noremap = true, silent = true})
@@ -72,11 +76,17 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap = true, silent = true, expr = true})
+--[[ vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap = true, silent = true, expr = true})
 -- vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {noremap = true, silent = true, expr = true})
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true})
+vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true}) ]]
+vim.api.nvim_set_keymap(
+  "i",
+  "<CR>",
+  'compe#confirm(luaeval("require \'nvim-autopairs\'.autopairs_cr()"))',
+  {silent = true, expr = true, noremap = true}
+)
 
 -- Telescope
 vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", {noremap = true})
@@ -86,13 +96,15 @@ vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<CR>", {noremap = 
 vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope help_tags<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fj", ":Telescope jumplist<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope registers<CR>", {noremap = true})
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ft",
+  ":lua require('telescope').extensions.asynctasks.all()<CR>",
+  {noremap = true}
+)
 
 -- Outline
 vim.api.nvim_set_keymap("n", "<leader>o", ":SymbolsOutline<CR>", {noremap = true})
 
-vim.api.nvim_set_keymap(
-  "i",
-  "<CR>",
-  'compe#confirm(luaeval("require \'nvim-autopairs\'.autopairs_cr()"))',
-  {silent = true, expr = true, noremap = true}
-)
+-- Markdown
+vim.api.nvim_set_keymap("n", "<f12>", ":MarkdownPreviewToggle<CR>", {noremap = true})

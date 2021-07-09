@@ -29,21 +29,33 @@ return require("packer").startup(
         require("config.compe")
       end
     }
-    use {"hrsh7th/vim-vsnip", event = "InsertEnter"}
+    use {
+      "hrsh7th/vim-vsnip",
+      event = "InsertEnter"
+    }
+    use {
+      "rafamadriz/friendly-snippets",
+      event = "InsertEnter"
+    }
+    use {
+      "SirVer/ultisnips",
+      -- event = "InsertEnter",
+      config = function()
+        require("config.snippet")
+      end,
+      disable = true
+    }
 
     -- language server
     use {"neovim/nvim-lspconfig"}
     use {
       "glepnir/lspsaga.nvim"
     }
-    --[[ use {
-      'ray-x/lsp_signature.nvim',
-  } ]]
     -- Treesitter
 
     use {
       "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
+      -- run = ":TSUpdate",
       config = function()
         require("config.treesitter")
       end
@@ -51,8 +63,12 @@ return require("packer").startup(
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+      config = function()
+        require("config.telescope")
+      end
     }
+    use {'GustavoKatel/telescope-asynctasks.nvim'}
 
     use {
       "windwp/nvim-autopairs",
@@ -64,7 +80,7 @@ return require("packer").startup(
     }
 
     -- Color scheme
-    use { "christianchiarulli/nvcode-color-schemes.vim", opt = true }
+    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
 
     -- Status Line
     use {
@@ -103,7 +119,7 @@ return require("packer").startup(
       end
     }
 
-    -- indent line
+    -- indent line, have bug, disabled it
     use {
       "lukas-reineke/indent-blankline.nvim",
       event = "BufRead",
@@ -112,7 +128,6 @@ return require("packer").startup(
       end,
       disable = true
     }
-
     --git
     use {
       "lewis6991/gitsigns.nvim",
@@ -160,6 +175,30 @@ return require("packer").startup(
         require("config.neoscroll")
       end,
       disable = true
+    }
+    -- Markdown
+    use {
+      "plasticboy/vim-markdown",
+      requires = {{"godlygeek/tabular"}},
+      ft = {"markdown"},
+      config = function()
+        require("config.markdown")
+      end
+    }
+
+    use {
+      "iamcco/markdown-preview.nvim",
+      ft = {"markdown"},
+      run = "cd app && yarn install"
+    }
+
+    -- task
+    use {
+      "skywind3000/asynctasks.vim",
+      requires = {{"skywind3000/asyncrun.vim"}},
+      config = function()
+        require("config.asynctasks")
+      end
     }
   end
 )

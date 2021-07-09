@@ -3,9 +3,9 @@ local nvim_lsp = require("lspconfig")
 require "lspsaga".init_lsp_saga()
 
 -- Set lua-language-server path
-local sumneko_root_path = "C:\\Users\\bsl13\\AppData\\Local\\nvim\\lua-language-server"
+local sumneko_root_path = "C:\\Users\\bsl13\\language-server\\lua-language-server"
 local sumneko_binary =
-  "C:\\Users\\bsl13\\AppData\\Local\\nvim\\lua-language-server\\bin\\Windows\\lua-language-server.exe"
+  "C:\\Users\\bsl13\\language-server\\lua-language-server\\bin\\Windows\\lua-language-server.exe"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -55,6 +55,12 @@ nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
   handlers = handlers
 }
+-- Setup zeta_note
+--[[nvim_lsp.zeta_note.setup {
+  cmd = {'C:\\Users\\bsl13\\language-server\\zeta_note\\zeta_note.exe'},
+  capabilities = capabilities,
+  handlers = handlers
+}--]]
 
 vim.fn.sign_define(
   "LspDiagnosticsSignError",

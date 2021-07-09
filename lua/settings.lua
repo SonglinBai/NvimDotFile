@@ -22,7 +22,7 @@ opt.pumheight = 10
 opt.fileencoding = "utf-8"
 opt.ruler = false
 opt.cmdheight = 1
-opt.mouse = ""
+opt.mouse = "a"
 opt.splitbelow = true
 opt.splitright = true
 opt.conceallevel = 0
@@ -56,4 +56,15 @@ opt.shortmess:append "c"
 opt.wildmenu = true
 opt.wildignorecase = true
 
--- opt.title=true
+-- folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false
+
+opt.errorbells = false
+opt.visualbell = false
+
+vim.api.nvim_command [[
+    autocmd InsertLeave,WinEnter * set cursorline
+    autocmd InsertEnter,WinLeave * set nocursorline
+]]
