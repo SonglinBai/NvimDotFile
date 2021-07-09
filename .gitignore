@@ -1,2 +1,4 @@
 init.vim.backup
 plugin
+
+plugin/packer_compiled.lua
