@@ -1,10 +1,5 @@
-# My Neovim config
+# 我的现代nvim配置
 
-## Plugins
-
-
-
-
-### wfjdisoafjdkslwowjfdksl
+## 用到的插件
 
 

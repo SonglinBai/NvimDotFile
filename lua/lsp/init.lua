@@ -55,12 +55,6 @@ nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
   handlers = handlers
 }
--- Setup zeta_note
---[[nvim_lsp.zeta_note.setup {
-  cmd = {'C:\\Users\\bsl13\\language-server\\zeta_note\\zeta_note.exe'},
-  capabilities = capabilities,
-  handlers = handlers
-}--]]
 
 vim.fn.sign_define(
   "LspDiagnosticsSignError",
@@ -79,15 +73,6 @@ vim.fn.sign_define(
   {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
 )
 
---[[ vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
-vim.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
-vim.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
-vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
-vim.cmd("nnoremap <silent> gh :Lspsaga lsp_finder<CR>")
-vim.cmd("nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>")
--- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.cmd("nnoremap <silent> <C-p> :lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>")
-vim.cmd("nnoremap <silent> <C-n> :lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>") ]]
 -- goto definition
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
 -- goto declaration
@@ -97,12 +82,12 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {nor
 -- goto implementation
 vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true})
 -- find definition and references
-vim.api.nvim_set_keymap(
+--[[ vim.api.nvim_set_keymap(
   "n",
   "gh",
   "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>",
   {noremap = true, silent = true}
-)
+) ]]
 -- hover doc
 vim.api.nvim_set_keymap(
   "n",

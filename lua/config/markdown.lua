@@ -10,3 +10,5 @@ g.vim_markdown_conceal_code_blocks = 0
 g.vim_markdown_new_list_item_indent = 1
 
 g.mkdp_auto_close = 0
+
+vim.api.nvim_set_keymap("s", "p", "p", {noremap = true})

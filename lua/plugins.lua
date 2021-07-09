@@ -37,14 +37,6 @@ return require("packer").startup(
       "rafamadriz/friendly-snippets",
       event = "InsertEnter"
     }
-    use {
-      "SirVer/ultisnips",
-      -- event = "InsertEnter",
-      config = function()
-        require("config.snippet")
-      end,
-      disable = true
-    }
 
     -- language server
     use {"neovim/nvim-lspconfig"}
@@ -68,7 +60,7 @@ return require("packer").startup(
         require("config.telescope")
       end
     }
-    use {'GustavoKatel/telescope-asynctasks.nvim'}
+    use {"GustavoKatel/telescope-asynctasks.nvim"}
 
     use {
       "windwp/nvim-autopairs",
