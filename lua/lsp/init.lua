@@ -38,7 +38,7 @@ nvim_lsp.sumneko_lua.setup {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "Lua5.4",
+        version = "Lua5.4.2",
         -- Setup your lua path
         path = vim.split(package.path, ";")
       },
@@ -152,7 +152,7 @@ vim.api.nvim_set_keymap(
   {noremap = true, silent = true}
 )
 -- float terminal
-vim.api.nvim_set_keymap(
+--[[ vim.api.nvim_set_keymap(
   "n",
   "<A-g>",
   "<cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit.exe')<CR>",
@@ -163,4 +163,4 @@ vim.api.nvim_set_keymap(
   "<A-q>",
   "<C-\\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>",
   {noremap = true, silent = true}
-)
+) ]]
