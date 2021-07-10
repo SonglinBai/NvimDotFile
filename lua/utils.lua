@@ -1,4 +1,16 @@
-local function define_augroups(definitions)
+local utils = {}
+
+function utils.check_lsp_client_active(name)
+  local clients = vim.lsp.get_active_clients()
+  for _, client in pairs(clients) do
+    if client.name == name then
+      return true
+    end
+  end
+  return false
+end
+
+function utils.define_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     vim.cmd("augroup " .. group_name)
     vim.cmd("autocmd!")
@@ -11,25 +23,4 @@ local function define_augroups(definitions)
   end
 end
 
--- ENABLE yank highlight
-define_augroups(
-  {
-    general_settings = {
-      {
-        "TextYankPost",
-        "*",
-        "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
-      }
-    }
-  }
-)
-
-vim.cmd [[
-  function! QuickFixToggle()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-      copen
-    else
-      cclose
-    endif
-endfunction
-]]
+return utils

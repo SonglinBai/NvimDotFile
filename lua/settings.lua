@@ -68,3 +68,51 @@ vim.api.nvim_command [[
     autocmd InsertLeave,WinEnter * set cursorline
     autocmd InsertEnter,WinLeave * set nocursorline
 ]]
+
+-- ENABLE yank highlight
+require"utils".define_augroups(
+  {
+    general_settings = {
+      {
+        "TextYankPost",
+        "*",
+        "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
+      }
+    }
+  }
+)
+
+vim.cmd [[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+endfunction
+]]
+
+-- enable diabled built modules
+local disabled_built_ins = {
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin", -- 'man',
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+  "spellfile_plugin",
+  -- 'matchit', 'matchparen', 'shada_plugin',
+}
+for _, plugin in pairs(disabled_built_ins) do
+  vim.g["loaded_" .. plugin] = 1
+end

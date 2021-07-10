@@ -41,7 +41,8 @@ return require("packer").startup(
     -- language server
     use {"neovim/nvim-lspconfig"}
     use {
-      "glepnir/lspsaga.nvim"
+      "glepnir/lspsaga.nvim",
+      disable = true
     }
     -- Treesitter
 
@@ -171,7 +172,7 @@ return require("packer").startup(
     -- Markdown
     use {
       "plasticboy/vim-markdown",
-      requires = {{"godlygeek/tabular"}},
+      requires = {{"godlygeek/tabular",ft = {"markdown"}}},
       ft = {"markdown"},
       config = function()
         require("config.markdown")

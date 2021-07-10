@@ -1,8 +1,10 @@
-require "utils"
 require "keymappings"
-require "settings"
 require "plugins"
+require "settings"
+require "utils"
 require "colorscheme"
 -- LSP
-require "lsp"
+require "lsp".init()
+require "lsp".setup()
+
 
