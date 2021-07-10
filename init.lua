@@ -6,4 +6,3 @@ require "colorscheme"
 -- LSP
 require "lsp"
 
-

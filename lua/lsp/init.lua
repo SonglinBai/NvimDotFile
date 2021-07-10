@@ -2,10 +2,16 @@ local nvim_lsp = require("lspconfig")
 -- Init lsp saga
 require "lspsaga".init_lsp_saga()
 
+local sumneko_root_path
+local sumneko_binary
 -- Set lua-language-server path
-local sumneko_root_path = "C:\\Users\\bsl13\\language-server\\lua-language-server"
-local sumneko_binary =
-  "C:\\Users\\bsl13\\language-server\\lua-language-server\\bin\\Windows\\lua-language-server.exe"
+if vim.fn.has("unix") then
+  sumneko_root_path = "/Users/songlin/language-server/lua-language-server"
+  sumneko_binary = "/Users/songlin/language-server/lua-language-server/bin/macOS/lua-language-server"
+elseif vim.fn.has("win32") then
+  sumneko_root_path = "C:\\Users\\bsl13\\language-server\\lua-language-server"
+  sumneko_binary = "C:\\Users\\bsl13\\language-server\\lua-language-server\\bin\\Windows\\lua-language-server.exe"
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
