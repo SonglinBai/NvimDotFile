@@ -151,16 +151,3 @@ vim.api.nvim_set_keymap(
   ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>",
   {noremap = true, silent = true}
 )
--- float terminal
---[[ vim.api.nvim_set_keymap(
-  "n",
-  "<A-g>",
-  "<cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit.exe')<CR>",
-  {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-  "t",
-  "<A-q>",
-  "<C-\\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>",
-  {noremap = true, silent = true}
-) ]]

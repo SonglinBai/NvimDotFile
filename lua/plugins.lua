@@ -192,5 +192,11 @@ return require("packer").startup(
         require("config.asynctasks")
       end
     }
+    use {
+      "akinsho/nvim-toggleterm.lua",
+      config = function()
+        require("config.toggleterm")
+      end
+    }
   end
 )
