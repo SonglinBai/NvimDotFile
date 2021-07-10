@@ -5,10 +5,10 @@ require "lspsaga".init_lsp_saga()
 local sumneko_root_path
 local sumneko_binary
 -- Set lua-language-server path
-if vim.fn.has("unix") then
+if vim.fn.has("unix") == 1 then
   sumneko_root_path = "/Users/songlin/language-server/lua-language-server"
   sumneko_binary = "/Users/songlin/language-server/lua-language-server/bin/macOS/lua-language-server"
-elseif vim.fn.has("win32") then
+elseif vim.fn.has("win32") == 1 then
   sumneko_root_path = "C:\\Users\\bsl13\\language-server\\lua-language-server"
   sumneko_binary = "C:\\Users\\bsl13\\language-server\\lua-language-server\\bin\\Windows\\lua-language-server.exe"
 end
