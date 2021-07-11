@@ -89,10 +89,4 @@ lsp_config.capabilities.textDocument.completion.completionItem.snippetSupport = 
 lsp_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {"documentation", "detail", "additionalTextEdits"}
 }
-
-lsp_config.setup = function()
-  require "lsp.c"
-  require "lsp.lua"
-  require "lsp.cmake"
-end
 return lsp_config

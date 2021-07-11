@@ -8,7 +8,7 @@ local cmd = vim.cmd
 local opt = vim.opt
 vim.g.python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts/python"
 
-cmd "filetype plugin indent on"
+cmd "filetype plugin on"
 cmd "set inccommand=split"
 cmd "set iskeyword+=-"
 cmd "set whichwrap+=<,>,[,],h,l"
@@ -77,6 +77,13 @@ require"utils".define_augroups(
         "TextYankPost",
         "*",
         "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
+      }
+    },
+    AutoFt = {
+      {
+        "FileType",
+        "*",
+        "lua require('utils').do_filetype(vim.fn.expand('<amatch>'))"
       }
     }
   }
