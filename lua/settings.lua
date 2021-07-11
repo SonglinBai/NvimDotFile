@@ -69,8 +69,8 @@ vim.api.nvim_command [[
     autocmd InsertEnter,WinLeave * set nocursorline
 ]]
 
--- ENABLE yank highlight
 require"utils".define_augroups(
+-- ENABLE yank highlight
   {
     general_settings = {
       {
@@ -79,6 +79,7 @@ require"utils".define_augroups(
         "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
       }
     },
+-- ENABLE auto load filetype file
     AutoFt = {
       {
         "FileType",
@@ -99,6 +100,7 @@ vim.cmd [[
 endfunction
 ]]
 
+--[[
 -- enable diabled built modules
 local disabled_built_ins = {
   "netrw",
@@ -123,3 +125,4 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+--]]

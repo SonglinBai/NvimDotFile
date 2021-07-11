@@ -174,5 +174,25 @@ return require("packer").startup(
         require("config.asynctasks")
       end
     }
+    -- diffview
+    use {
+      "sindrets/diffview.nvim",
+      event = "BufRead"
+    }
+    -- -- debug
+    -- use {
+    --   "mfussenegger/nvim-dap",
+    --   event = "BufWinEnter",
+    --   config = function()
+    --     require "config.dap"
+    --   end
+    -- }
+    -- use {
+    --   "rcarriga/nvim-dap-ui",
+    --   event = "BufWinEnter",
+    --   config = function()
+    --     require "config.dapui"
+    --   end
+    -- }
   end
 )

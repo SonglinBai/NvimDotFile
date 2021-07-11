@@ -14,7 +14,7 @@ g.nvim_tree_root_folder_modifier = ":t"
 g.nvim_tree_tab_open = 0
 g.nvim_tree_allow_resize = 1
 g.nvim_tree_lsp_diagnostics = 1
-g.nvim_tree_auto_ignore_ft = {"startify"}
+-- g.nvim_tree_auto_ignore_ft = {"startify"}
 
 g.nvim_tree_show_icons = {
   git = 1,
@@ -48,5 +48,7 @@ local tree_cb = require("nvim-tree.config").nvim_tree_callback
 vim.g.nvim_tree_bindings = {
   {key = {"l", "<CR>", "o"}, cb = tree_cb "edit"},
   {key = "h", cb = tree_cb "close_node"},
-  {key = "v", cb = tree_cb "vsplit"}
+  {key = "v", cb = tree_cb "vsplit"},
+  {key = "s", cb = tree_cb "split"},
+  {key = "t", cb = tree_cb "tabnew"}
 }
