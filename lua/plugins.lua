@@ -15,7 +15,6 @@ return require("packer").startup(
 
     use {
       "kyazdani42/nvim-tree.lua",
-      -- cmd = "NvimTreeToggle",
       config = function()
         require("config.nvimtree")
       end
@@ -24,7 +23,7 @@ return require("packer").startup(
     -- auto completion
     use {
       "hrsh7th/nvim-compe",
-      event = "InsertEnter",
+      -- event = "InsertEnter",
       config = function()
         require("config.compe")
       end
@@ -40,12 +39,7 @@ return require("packer").startup(
 
     -- language server
     use {"neovim/nvim-lspconfig"}
-    use {
-      "glepnir/lspsaga.nvim",
-      disable = true
-    }
     -- Treesitter
-
     use {
       "nvim-treesitter/nvim-treesitter",
       -- run = ":TSUpdate",
@@ -78,8 +72,7 @@ return require("packer").startup(
     -- Status Line
     use {
       "glepnir/galaxyline.nvim",
-      branch = "main",
-      -- your statusline
+      event = "BufWinEnter",
       config = function()
         require("config.lunarline")
       end,
@@ -89,6 +82,7 @@ return require("packer").startup(
 
     use {
       "romgrk/barbar.nvim",
+      event = "BufWinEnter",
       config = function()
         require("config.barbar")
       end,
@@ -99,6 +93,7 @@ return require("packer").startup(
     use {
       "phaazon/hop.nvim",
       as = "hop",
+      event = "BufRead",
       config = function()
         -- you can configure Hop the way you like here; see :h hop-config
         require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
@@ -107,9 +102,11 @@ return require("packer").startup(
     -- QuickScope
     use {
       "unblevable/quick-scope",
+      -- event = "BufRead",
       config = function()
         require("config.quickscope")
-      end
+      end,
+      disable = true
     }
 
     -- indent line, have bug, disabled it
@@ -124,18 +121,17 @@ return require("packer").startup(
     --git
     use {
       "lewis6991/gitsigns.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim"
-      },
+      event = "BufRead",
       config = function()
         require("config.gitsigns")
       end
     }
     -- Comment
     use {
-      "b3nj5m1n/kommentary",
+      "terrortylor/nvim-comment",
+      event = "BufRead",
       config = function()
-        require("config.kommentary")
+        require("config.comment")
       end
     }
 
@@ -144,11 +140,13 @@ return require("packer").startup(
       "norcalli/nvim-colorizer.lua",
       config = function()
         require("config.colorizer")
-      end
+      end,
+      disable = true
     }
     -- Outline
     use {
       "simrat39/symbols-outline.nvim",
+      event = "BufRead",
       config = function()
         require("config.outline")
       end
@@ -157,28 +155,11 @@ return require("packer").startup(
     -- Format
     use {
       "mhartington/formatter.nvim",
+      event = "BufRead",
       config = function()
         require("config.formatter")
       end
     }
-    -- Scroll
-    use {
-      "karb94/neoscroll.nvim",
-      config = function()
-        require("config.neoscroll")
-      end,
-      disable = true
-    }
-    -- Markdown
-    use {
-      "plasticboy/vim-markdown",
-      requires = {{"godlygeek/tabular",ft = {"markdown"}}},
-      ft = {"markdown"},
-      config = function()
-        require("config.markdown")
-      end
-    }
-
     use {
       "iamcco/markdown-preview.nvim",
       ft = {"markdown"},
@@ -191,12 +172,6 @@ return require("packer").startup(
       requires = {{"skywind3000/asyncrun.vim"}},
       config = function()
         require("config.asynctasks")
-      end
-    }
-    use {
-      "akinsho/nvim-toggleterm.lua",
-      config = function()
-        require("config.toggleterm")
       end
     }
   end

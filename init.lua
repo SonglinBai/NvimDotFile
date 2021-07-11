@@ -6,5 +6,3 @@ require "colorscheme"
 -- LSP
 require "lsp".init()
 require "lsp".setup()
-
-
