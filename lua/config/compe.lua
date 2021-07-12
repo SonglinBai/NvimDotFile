@@ -1,10 +1,14 @@
-vim.g.vsnip_snippet_dir = CONFIG_PATH .. "\\snippets\\"
+if vim.fn.has("unix") == 1 then
+  vim.g.vsnip_snippet_dir = CONFIG_PATH .. "/snippets/"
+elseif vim.fn.has("win32") == 1 then
+  vim.g.vsnip_snippet_dir = CONFIG_PATH .. "\\snippets\\"
+end
 local opt = {
   enabled = true,
   autocomplete = true,
   debug = false,
   min_length = 1,
-  preselect = "enable",
+  preselect = "confirm",
   throttle_time = 80,
   source_timeout = 200,
   resolve_timeout = 800,
@@ -23,7 +27,7 @@ local opt = {
     nvim_lua = false,
     spell = {kind = "  "},
     tags = false,
-    vim_dadbod_completion = true,
+    vim_dadbod_completion = true
     -- snippets_nvim = {kind = "  "},
     -- ultisnips = {kind = "  "},
     -- treesitter = {kind = "  "},
@@ -71,4 +75,3 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
-

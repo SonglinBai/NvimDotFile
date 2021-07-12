@@ -6,7 +6,11 @@ TERMINAL = vim.fn.expand "$TERMINAL"
 
 local cmd = vim.cmd
 local opt = vim.opt
-vim.g.python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts/python"
+if vim.fn.has("unix") == 1 then
+  vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
+elseif vim.fn.has("win32") == 1 then
+  vim.g.python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts/python"
+end
 
 cmd "filetype plugin on"
 cmd "set inccommand=split"
@@ -17,9 +21,9 @@ opt.completeopt = "menuone,noselect"
 opt.hidden = true
 opt.wrap = false
 opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
 opt.ignorecase = true
 opt.pumheight = 10
-opt.fileencoding = "utf-8"
 opt.ruler = false
 opt.cmdheight = 1
 opt.mouse = "a"
@@ -64,13 +68,19 @@ opt.foldenable = false
 opt.errorbells = false
 opt.visualbell = false
 
+opt.scrolloff = 1
+opt.sidescrolloff = 5
+
+opt.autoread = true
+opt.history = 1000
+
 vim.api.nvim_command [[
     autocmd InsertLeave,WinEnter * set cursorline
     autocmd InsertEnter,WinLeave * set nocursorline
 ]]
 
-require"utils".define_augroups(
--- ENABLE yank highlight
+require "utils".define_augroups(
+  -- ENABLE yank highlight
   {
     general_settings = {
       {
@@ -79,7 +89,7 @@ require"utils".define_augroups(
         "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})"
       }
     },
--- ENABLE auto load filetype file
+    -- ENABLE auto load filetype file
     AutoFt = {
       {
         "FileType",

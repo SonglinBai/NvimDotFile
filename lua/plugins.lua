@@ -163,7 +163,8 @@ return require("packer").startup(
     use {
       "iamcco/markdown-preview.nvim",
       ft = {"markdown"},
-      run = "cd app && yarn install"
+      run = "cd app && yarn install",
+      disable = true
     }
 
     -- task
@@ -194,5 +195,12 @@ return require("packer").startup(
     --     require "config.dapui"
     --   end
     -- }
+    use {
+      "blackCauldron7/surround.nvim",
+      event = "BufRead",
+      config = function()
+        require "surround".setup {}
+      end
+    }
   end
 )
