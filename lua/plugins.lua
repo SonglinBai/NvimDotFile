@@ -55,7 +55,15 @@ return require("packer").startup(
         require("config.telescope")
       end
     }
-    use {"GustavoKatel/telescope-asynctasks.nvim"}
+    -- use {"GustavoKatel/telescope-asynctasks.nvim"}
+    -- task
+    -- use {
+    --   "skywind3000/asynctasks.vim",
+    --   requires = {{"skywind3000/asyncrun.vim"}},
+    --   config = function()
+    --     require("config.asynctasks")
+    --   end
+    -- }
 
     use {
       "windwp/nvim-autopairs",
@@ -167,14 +175,6 @@ return require("packer").startup(
       disable = true
     }
 
-    -- task
-    use {
-      "skywind3000/asynctasks.vim",
-      requires = {{"skywind3000/asyncrun.vim"}},
-      config = function()
-        require("config.asynctasks")
-      end
-    }
     -- diffview
     use {
       "sindrets/diffview.nvim",
