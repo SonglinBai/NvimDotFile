@@ -7,3 +7,4 @@ require "colorscheme"
 require "lsp".init()
 
 require "treesitter"
+-- require "config.vimtex"
