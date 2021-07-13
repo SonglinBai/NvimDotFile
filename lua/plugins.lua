@@ -23,7 +23,8 @@ return require("packer").startup(
     -- auto completion
     use {
       "hrsh7th/nvim-compe",
-      -- event = "InsertEnter",
+      event = "InsertEnter",
+      -- event = "BufRead",
       config = function()
         require("config.compe")
       end
@@ -31,10 +32,12 @@ return require("packer").startup(
     use {
       "hrsh7th/vim-vsnip",
       event = "InsertEnter"
+      -- event = "BufRead"
     }
     use {
       "rafamadriz/friendly-snippets",
       event = "InsertEnter"
+      -- event = "BufRead"
     }
 
     -- language server
@@ -42,11 +45,10 @@ return require("packer").startup(
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
-      -- run = ":TSUpdate",
-      config = function()
-        require("config.treesitter")
-      end
+      -- run = ":TSUpdate"
     }
+    use {"nvim-treesitter/nvim-treesitter-textobjects"}
+    use {"p00f/nvim-ts-rainbow"}
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
@@ -55,19 +57,11 @@ return require("packer").startup(
         require("config.telescope")
       end
     }
-    -- use {"GustavoKatel/telescope-asynctasks.nvim"}
-    -- task
-    -- use {
-    --   "skywind3000/asynctasks.vim",
-    --   requires = {{"skywind3000/asyncrun.vim"}},
-    --   config = function()
-    --     require("config.asynctasks")
-    --   end
-    -- }
 
     use {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
+      -- event = "BufRead",
       after = {"telescope.nvim", "nvim-compe"},
       config = function()
         require("config.autopairs")
@@ -85,7 +79,7 @@ return require("packer").startup(
         require("config.lunarline")
       end,
       -- some optional icons
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
+      requires = {"kyazdani42/nvim-web-devicons"}
     }
 
     use {
@@ -94,7 +88,7 @@ return require("packer").startup(
       config = function()
         require("config.barbar")
       end,
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
+      requires = {"kyazdani42/nvim-web-devicons"}
     }
 
     -- Motion
@@ -107,16 +101,6 @@ return require("packer").startup(
         require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
       end
     }
-    -- QuickScope
-    use {
-      "unblevable/quick-scope",
-      -- event = "BufRead",
-      config = function()
-        require("config.quickscope")
-      end,
-      disable = true
-    }
-
     -- indent line, have bug, disabled it
     use {
       "lukas-reineke/indent-blankline.nvim",
@@ -180,26 +164,35 @@ return require("packer").startup(
       "sindrets/diffview.nvim",
       event = "BufRead"
     }
-    -- -- debug
-    -- use {
-    --   "mfussenegger/nvim-dap",
-    --   event = "BufWinEnter",
-    --   config = function()
-    --     require "config.dap"
-    --   end
-    -- }
-    -- use {
-    --   "rcarriga/nvim-dap-ui",
-    --   event = "BufWinEnter",
-    --   config = function()
-    --     require "config.dapui"
-    --   end
-    -- }
+    -- surround
     use {
       "blackCauldron7/surround.nvim",
       event = "BufRead",
       config = function()
         require "surround".setup {}
+      end
+    }
+    -- zen mode
+    use {
+      "Pocco81/TrueZen.nvim",
+      event = "BufRead",
+      config = function()
+        require("config.zen")
+      end
+    }
+    use {
+      "tversteeg/registers.nvim",
+      event = "InsertEnter",
+      -- event = "BufRead",
+      config = function()
+        require("config.registers")
+      end
+    }
+    -- quickfix enhancement
+    use {
+      "kevinhwang91/nvim-bqf",
+      config = function()
+        require("config.bqf")
       end
     }
   end

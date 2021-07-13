@@ -8,9 +8,12 @@ local cmd = vim.cmd
 local opt = vim.opt
 if vim.fn.has("unix") == 1 then
   vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
+  opt.rtp:append "/usr/local/opt/fzf"
 elseif vim.fn.has("win32") == 1 then
   vim.g.python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts/python"
+  opt.rtp:append(DATA_PATH .. "\\fzf\\")
 end
+
 
 cmd "filetype plugin on"
 cmd "set inccommand=split"
@@ -109,30 +112,3 @@ vim.cmd [[
     endif
 endfunction
 ]]
-
---[[
--- enable diabled built modules
-local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin", -- 'man',
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  -- 'matchit', 'matchparen', 'shada_plugin',
-}
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
-end
---]]
