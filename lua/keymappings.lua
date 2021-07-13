@@ -99,12 +99,6 @@ vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<CR>", {noremap = 
 vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope help_tags<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fj", ":Telescope jumplist<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope registers<CR>", {noremap = true})
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ft",
-  ":lua require('telescope').extensions.asynctasks.all()<CR>",
-  {noremap = true}
-)
 
 -- Outline
 vim.api.nvim_set_keymap("n", "<leader>o", ":SymbolsOutline<CR>", {noremap = true})

@@ -19,8 +19,6 @@ lsp_config.init = function()
     {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
   )
 
-  -- Set Default Prefix.
-  -- Note: You can set a prefix per lsp server in the lv-globals.lua file
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
@@ -64,18 +62,24 @@ lsp_config.init = function()
     "   (TypeParameter)"
   }
   -- goto definition
-  vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
+  --[[ vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
   -- goto declaration
   vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {noremap = true, silent = true})
   -- list references
   vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {noremap = true, silent = true})
   -- goto implementation
-  vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true}) ]]
 
-  vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
+  --[[ vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
   vim.api.nvim_set_keymap("n", "[e", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {noremap = true, silent = true})
   vim.api.nvim_set_keymap("n", "]e", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {noremap = true, silent = true})
-
+  -- Lsp keymappings
+  vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>LspStart<CR>", {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "<leader>lS", "<cmd>LspStop<CR>", {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>", {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "<leader>li", "<cmd>LspInfo<CR>", {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", {noremap = true, silent = true})
+ ]]
   -- Set q to close lspinfo window
   require("utils").define_augroups {
     _general_lsp = {

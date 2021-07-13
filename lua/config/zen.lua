@@ -44,6 +44,6 @@ true_zen.setup(
   }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>zz", ":TZFocus<CR>", {noremap = true})
+--[[ vim.api.nvim_set_keymap("n", "<leader>zz", ":TZFocus<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>zm", ":TZMinimalist<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>za", ":TZAtaraxis<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>za", ":TZAtaraxis<CR>", {noremap = true}) ]]

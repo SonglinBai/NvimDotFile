@@ -44,7 +44,7 @@ return require("packer").startup(
     use {"neovim/nvim-lspconfig"}
     -- Treesitter
     use {
-      "nvim-treesitter/nvim-treesitter",
+      "nvim-treesitter/nvim-treesitter"
       -- run = ":TSUpdate"
     }
     use {"nvim-treesitter/nvim-treesitter-textobjects"}
@@ -120,7 +120,7 @@ return require("packer").startup(
     }
     -- Comment
     use {
-      "terrortylor/nvim-comment",
+      'b3nj5m1n/kommentary',
       event = "BufRead",
       config = function()
         require("config.comment")
@@ -186,13 +186,27 @@ return require("packer").startup(
       -- event = "BufRead",
       config = function()
         require("config.registers")
-      end
+      end,
+      disable = true
     }
     -- quickfix enhancement
     use {
       "kevinhwang91/nvim-bqf",
       config = function()
         require("config.bqf")
+      end
+    }
+    use {
+      "lervag/vimtex",
+      ft = "tex",
+      config = function()
+        require("config.vimtex")
+      end
+    }
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("config.whichkey")
       end
     }
   end
