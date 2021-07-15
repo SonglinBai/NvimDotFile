@@ -23,45 +23,54 @@ cmd "set whichwrap+=<,>,[,],h,l"
 opt.completeopt = "menuone,noselect"
 opt.hidden = true
 opt.wrap = false
+
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
+
 opt.ignorecase = true
-opt.pumheight = 10
-opt.ruler = false
-opt.cmdheight = 1
-opt.mouse = "a"
-opt.splitbelow = true
-opt.splitright = true
-opt.conceallevel = 0
+opt.incsearch = true
+opt.smartcase = true
+
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.smarttab = true
-opt.smartcase = true
 opt.expandtab = true
+
+opt.splitbelow = true
+opt.splitright = true
+
 opt.smartindent = true
 opt.cindent = true
-opt.swapfile = false
 opt.autoindent = true
-opt.laststatus = 2
-opt.number = true
+
+opt.pumheight = 10
+opt.ruler = false
+opt.cmdheight = 1
 opt.cursorline = true
 opt.background = "dark"
 opt.showtabline = 2
 opt.showmode = false
 opt.showcmd = true
-opt.backup = false
-opt.writebackup = false
 opt.signcolumn = "yes"
-opt.updatetime = 0
-opt.timeoutlen = 500
-opt.incsearch = true
-opt.termguicolors = true
-opt.undodir = CACHE_PATH .. "\\undo\\"
-opt.undofile = true
+opt.number = true
 opt.relativenumber = true
-opt.shortmess:append "c"
+opt.termguicolors = true
 opt.wildmenu = true
 opt.wildignorecase = true
+opt.mouse = "a"
+opt.laststatus = 2
+opt.conceallevel = 0
+
+opt.updatetime = 0
+opt.timeoutlen = 500
+
+opt.writebackup = false
+opt.swapfile = false
+opt.backup = false
+opt.undodir = CACHE_PATH .. "\\undo\\"
+opt.undofile = true
+
+opt.shortmess:append "c"
 
 -- folding
 opt.foldmethod = "expr"
@@ -93,13 +102,13 @@ require "utils".define_augroups(
       }
     },
     -- ENABLE auto load filetype file
-    AutoFt = {
+    --[[ AutoFt = {
       {
         "FileType",
         "*",
         "lua require('utils').do_filetype(vim.fn.expand('<amatch>'))"
       }
-    }
+    } ]]
   }
 )
 

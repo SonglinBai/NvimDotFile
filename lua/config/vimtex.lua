@@ -59,4 +59,3 @@ elseif vim.fn.has("unix") == 1 then
     let g:vimtex_compiler_latexmk = {'build_dir': '/Users/songlin/Documents/LatexOutput/', 'hooks': [function('UpdateSkim')] }
   ]]
 end
---]==]

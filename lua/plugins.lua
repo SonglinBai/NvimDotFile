@@ -24,7 +24,6 @@ return require("packer").startup(
     use {
       "hrsh7th/nvim-compe",
       event = "InsertEnter",
-      -- event = "BufRead",
       config = function()
         require("config.compe")
       end
@@ -32,12 +31,10 @@ return require("packer").startup(
     use {
       "hrsh7th/vim-vsnip",
       event = "InsertEnter"
-      -- event = "BufRead"
     }
     use {
       "rafamadriz/friendly-snippets",
       event = "InsertEnter"
-      -- event = "BufRead"
     }
 
     -- language server
@@ -61,7 +58,6 @@ return require("packer").startup(
     use {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
-      -- event = "BufRead",
       after = {"telescope.nvim", "nvim-compe"},
       config = function()
         require("config.autopairs")
@@ -130,6 +126,7 @@ return require("packer").startup(
     -- Color
     use {
       "norcalli/nvim-colorizer.lua",
+      event = "BufWinEnter",
       config = function()
         require("config.colorizer")
       end,
@@ -138,7 +135,7 @@ return require("packer").startup(
     -- Outline
     use {
       "simrat39/symbols-outline.nvim",
-      event = "BufRead",
+      event = "BufWinEnter",
       config = function()
         require("config.outline")
       end
@@ -162,7 +159,7 @@ return require("packer").startup(
     -- diffview
     use {
       "sindrets/diffview.nvim",
-      event = "BufRead"
+      event = "BufWinEnter"
     }
     -- surround
     use {
@@ -175,23 +172,15 @@ return require("packer").startup(
     -- zen mode
     use {
       "Pocco81/TrueZen.nvim",
-      event = "BufRead",
+      event = "BufWinEnter",
       config = function()
         require("config.zen")
       end
     }
-    use {
-      "tversteeg/registers.nvim",
-      event = "InsertEnter",
-      -- event = "BufRead",
-      config = function()
-        require("config.registers")
-      end,
-      disable = true
-    }
     -- quickfix enhancement
     use {
       "kevinhwang91/nvim-bqf",
+      event = "BufWinEnter",
       config = function()
         require("config.bqf")
       end
