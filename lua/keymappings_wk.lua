@@ -51,6 +51,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true})
+vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
 
 local wk = require "which-key"
 
@@ -134,7 +135,13 @@ local v_map = {
       s = {'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Stage hunk"},
       r = {'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Reset hunk"}
     }
-  }
+  },
+  [","] = {
+    c = {"<cmd>HopChar1<CR>", "Jump by 1 char"},
+    s = {"<cmd>HopPattern<CR>", "Jump by pattern"},
+    w = {"<cmd>HopWord<CR>", "Jump to word"},
+    l = {"<cmd>HopLine<CR>", "Jump to line"}
+  },
 }
 
 local o_map = {

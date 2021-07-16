@@ -9,9 +9,11 @@ local opt = vim.opt
 if vim.fn.has("unix") == 1 then
   vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
   opt.rtp:append "/usr/local/opt/fzf"
+  opt.shell = 'zsh'
 elseif vim.fn.has("win32") == 1 then
   vim.g.python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts/python"
   opt.rtp:append(DATA_PATH .. "\\fzf\\")
+  -- opt.shell = 'powershell'
 end
 
 
@@ -102,13 +104,13 @@ require "utils".define_augroups(
       }
     },
     -- ENABLE auto load filetype file
-    --[[ AutoFt = {
+    AutoFt = {
       {
         "FileType",
         "*",
         "lua require('utils').do_filetype(vim.fn.expand('<amatch>'))"
       }
-    } ]]
+    }
   }
 )
 

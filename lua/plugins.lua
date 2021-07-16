@@ -116,7 +116,7 @@ return require("packer").startup(
     }
     -- Comment
     use {
-      'b3nj5m1n/kommentary',
+      "b3nj5m1n/kommentary",
       event = "BufRead",
       config = function()
         require("config.comment")
@@ -196,6 +196,13 @@ return require("packer").startup(
       "folke/which-key.nvim",
       config = function()
         require("config.whichkey")
+      end
+    }
+    use {
+      "akinsho/nvim-toggleterm.lua",
+      event = "BufWinEnter",
+      config = function()
+        require("config.terminal")
       end
     }
   end
