@@ -41,7 +41,6 @@ vim.cmd 'vnoremap P "0P'
 
 -- compe
 vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap = true, silent = true, expr = true})
--- vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap(
   "i",
   "<Tab>",
@@ -53,11 +52,16 @@ vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {noremap 
 vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
 
+vim.cmd[[
+  imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+  smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+]]
+
 local wk = require "which-key"
 
 local n_map = {
   ["<leader>"] = {
-    f = {
+    ['f'] = {
       name = "+Telescope",
       f = {"<cmd>Telescope find_files<CR>", "Find file"},
       g = {"<cmd>Telescope live_grep<CR>", "Live grep"},
@@ -86,7 +90,8 @@ local n_map = {
       name = "+Lsp",
       s = {"<cmd>LspStart<CR>", "Start LSP"},
       S = {"<cmd>LspStop<CR>", "Stop LSP"},
-      r = {"<cmd>LspRestart<CR>", "Restart LSP"},
+      r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
+      -- r = {"<cmd>LspRestart<CR>", "Restart LSP"},
       i = {"<cmd>LspInfo<CR>", "LSP info"},
       f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format buffer"}
     },
@@ -101,10 +106,10 @@ local n_map = {
     } ]]
   },
   ["g"] = {
-    --[[ c = {
+    c = {
       name = "Comment motion",
-      c = {"", "Current line"}
-    }, ]]
+      c = "Current line"
+    },
     d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition"},
     D = {"<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration"},
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Go to references"},
@@ -142,6 +147,7 @@ local v_map = {
     w = {"<cmd>HopWord<CR>", "Jump to word"},
     l = {"<cmd>HopLine<CR>", "Jump to line"}
   },
+  ["gc"] = "Comment"
 }
 
 local o_map = {
