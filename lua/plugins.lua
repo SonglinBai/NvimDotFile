@@ -16,7 +16,7 @@ return require("packer").startup(
     use {
       "kyazdani42/nvim-tree.lua",
       config = function()
-        require("config.nvimtree")
+        require("config.nvimtree").config()
       end
     }
 
@@ -25,7 +25,7 @@ return require("packer").startup(
       "hrsh7th/nvim-compe",
       event = "InsertEnter",
       config = function()
-        require("config.compe")
+        require("config.compe").config()
       end
     }
     use {
@@ -51,7 +51,7 @@ return require("packer").startup(
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
       config = function()
-        require("config.telescope")
+        require("config.telescope").config()
       end
     }
 
@@ -60,7 +60,7 @@ return require("packer").startup(
       event = "InsertEnter",
       after = {"telescope.nvim", "nvim-compe"},
       config = function()
-        require("config.autopairs")
+        require("config.autopairs").config()
       end
     }
 
@@ -72,7 +72,7 @@ return require("packer").startup(
       "glepnir/galaxyline.nvim",
       event = "BufWinEnter",
       config = function()
-        require("config.lunarline")
+        require("config.lunarline").config()
       end,
       -- some optional icons
       requires = {"kyazdani42/nvim-web-devicons"}
@@ -82,7 +82,7 @@ return require("packer").startup(
       "romgrk/barbar.nvim",
       event = "BufWinEnter",
       config = function()
-        require("config.barbar")
+        require("config.barbar").config()
       end,
       requires = {"kyazdani42/nvim-web-devicons"}
     }
@@ -102,7 +102,7 @@ return require("packer").startup(
       "lukas-reineke/indent-blankline.nvim",
       event = "BufRead",
       config = function()
-        require("config.indent-blankline")
+        require("config.indent-blankline").config()
       end,
       disable = true
     }
@@ -111,7 +111,7 @@ return require("packer").startup(
       "lewis6991/gitsigns.nvim",
       event = "BufRead",
       config = function()
-        require("config.gitsigns")
+        require("config.gitsigns").config()
       end
     }
     -- Comment
@@ -119,7 +119,7 @@ return require("packer").startup(
       "b3nj5m1n/kommentary",
       event = "BufRead",
       config = function()
-        require("config.comment")
+        require("config.comment").config()
       end
     }
 
@@ -128,7 +128,7 @@ return require("packer").startup(
       "norcalli/nvim-colorizer.lua",
       event = "BufWinEnter",
       config = function()
-        require("config.colorizer")
+        require("config.colorizer").config()
       end,
       disable = true
     }
@@ -137,7 +137,7 @@ return require("packer").startup(
       "simrat39/symbols-outline.nvim",
       event = "BufWinEnter",
       config = function()
-        require("config.outline")
+        require("config.outline").config()
       end
     }
 
@@ -146,7 +146,7 @@ return require("packer").startup(
       "mhartington/formatter.nvim",
       event = "BufRead",
       config = function()
-        require("config.formatter")
+        require("config.formatter").config()
       end
     }
     use {
@@ -174,35 +174,36 @@ return require("packer").startup(
       "Pocco81/TrueZen.nvim",
       event = "BufWinEnter",
       config = function()
-        require("config.zen")
-      end
+        require("config.zen").config()
+      end,
+      disable = true
     }
     -- quickfix enhancement
     use {
       "kevinhwang91/nvim-bqf",
       event = "BufWinEnter",
       config = function()
-        require("config.bqf")
+        require("config.bqf").config()
       end
     }
     use {
       "lervag/vimtex",
       ft = "tex",
       config = function()
-        require("config.vimtex")
+        require("config.vimtex").config()
       end
     }
     use {
       "folke/which-key.nvim",
       config = function()
-        require("config.whichkey")
+        require("config.whichkey").config()
       end
     }
     use {
       "akinsho/nvim-toggleterm.lua",
       event = "BufWinEnter",
       config = function()
-        require("config.terminal")
+        require("config.terminal").config()
       end
     }
   end

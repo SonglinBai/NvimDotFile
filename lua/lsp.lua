@@ -1,6 +1,6 @@
-local lsp_config = {}
+local M = {}
 
-lsp_config.init = function()
+M.config = function()
   -- Set Sign
   vim.fn.sign_define(
     "LspDiagnosticsSignError",
@@ -88,9 +88,9 @@ lsp_config.init = function()
   }
 end
 
-lsp_config.capabilities = vim.lsp.protocol.make_client_capabilities()
-lsp_config.capabilities.textDocument.completion.completionItem.snippetSupport = true
-lsp_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {"documentation", "detail", "additionalTextEdits"}
 }
-return lsp_config
+return M

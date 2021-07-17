@@ -1,42 +1,42 @@
-if vim.fn.has("unix") == 1 then
-  vim.g.vsnip_snippet_dir = CONFIG_PATH .. "/snippets/"
-elseif vim.fn.has("win32") == 1 then
-  vim.g.vsnip_snippet_dir = CONFIG_PATH .. "\\snippets\\"
-end
-local opt = {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  min_length = 1,
-  preselect = "confirm",
-  throttle_time = 80,
-  source_timeout = 200,
-  resolve_timeout = 800,
-  incomplete_delay = 400,
-  max_abbr_width = 40,
-  max_kind_width = 20,
-  max_menu_width = 20,
-  documentation = true,
-  source = {
-    path = {kind = "  "},
-    buffer = {kind = "  "},
-    calc = {kind = "  "},
-    vsnip = {kind = "  "},
-    nvim_lsp = {kind = "  "},
-    -- nvim_lua = {kind = "  "},
-    nvim_lua = false,
-    spell = {kind = "  "},
-    tags = false,
-    vim_dadbod_completion = true
-    -- snippets_nvim = {kind = "  "},
-    -- ultisnips = {kind = "  "},
-    -- treesitter = {kind = "  "},
-    -- emoji = {kind = " ﲃ ", filetypes = {"markdown", "text"}}
-    -- for emoji press : (idk if that in compe tho)
-  }
-}
+local M = {}
 
-require("compe").setup(opt)
+M.config = function()
+  vim.g.vsnip_snippet_dir = O.vsnip_snippet_dir
+  local opt = {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = "confirm",
+    throttle_time = 80,
+    source_timeout = 200,
+    resolve_timeout = 800,
+    incomplete_delay = 400,
+    max_abbr_width = 40,
+    max_kind_width = 20,
+    max_menu_width = 20,
+    documentation = true,
+    source = {
+      path = {kind = "  "},
+      buffer = {kind = "  "},
+      calc = {kind = "  "},
+      vsnip = {kind = "  "},
+      nvim_lsp = {kind = "  "},
+      -- nvim_lua = {kind = "  "},
+      nvim_lua = false,
+      spell = {kind = "  "},
+      tags = false,
+      vim_dadbod_completion = true
+      -- snippets_nvim = {kind = "  "},
+      -- ultisnips = {kind = "  "},
+      -- treesitter = {kind = "  "},
+      -- emoji = {kind = " ﲃ ", filetypes = {"markdown", "text"}}
+      -- for emoji press : (idk if that in compe tho)
+    }
+  }
+
+  require("compe").setup(opt)
+end
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -75,3 +75,5 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
+
+return M

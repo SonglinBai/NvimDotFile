@@ -1,9 +1,12 @@
-local g = vim.g
-g.tex_flavor = "latex"
-g.vimtex_quickfix_mode = 0
-g.tex_conceal = "abdmg"
-g.vimtex_compiler_method = "latexmk"
-vim.cmd[[
+local M = {}
+
+M.config = function()
+  local g = vim.g
+  g.tex_flavor = "latex"
+  g.vimtex_quickfix_mode = 0
+  g.tex_conceal = "abdmg"
+  g.vimtex_compiler_method = "latexmk"
+  vim.cmd [[
   function! SetServerName()
     if has('win32')
       let nvim_server_file = $TEMP . "/curnvimserver.txt"
@@ -19,24 +22,22 @@ vim.cmd[[
       autocmd FileType tex call SetServerName()
   augroup END
 ]]
---[[ g.vimtex_compiler_latexmk_engines = {
+  --[[ g.vimtex_compiler_latexmk_engines = {
   _ = '-lualatex'
 } ]]
+  if vim.fn.has("win32") == 1 then
+    -- g.vimtex_view_method = "SumatraPDF"
+    g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+    g.vimtex_view_general_options_latexmk = "-reuse-instance"
+    g.vimtex_compiler_latexmk = {
+      build_dir = "C:\\Users\\bsl13\\Documents\\LatexOutput\\"
+    }
+  elseif vim.fn.has("unix") == 1 then
+    g.vimtex_view_method = "skim"
+    g.vimtex_view_general_viewer = "/Applications/Skim.app/Contents/SharedSupport/displayline"
+    g.vimtex_view_general_options = "-r @line @pdf @tex"
 
-if vim.fn.has("win32") == 1 then
-  -- g.vimtex_view_method = "SumatraPDF"
-  g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
-  g.vimtex_view_general_options_latexmk = "-reuse-instance"
-  g.vimtex_compiler_latexmk = {
-    build_dir = 'C:\\Users\\bsl13\\Documents\\LatexOutput\\',
-  }
-elseif vim.fn.has("unix") == 1 then
-  g.vimtex_view_method = "skim"
-  g.vimtex_view_general_viewer = "/Applications/Skim.app/Contents/SharedSupport/displayline"
-  g.vimtex_view_general_options = "-r @line @pdf @tex"
-
-
-  vim.cmd [[
+    vim.cmd [[
     function! UpdateSkim(status)
     if !a:status | return | endif
 
@@ -58,4 +59,7 @@ elseif vim.fn.has("unix") == 1 then
     endfunction
     let g:vimtex_compiler_latexmk = {'build_dir': '/Users/songlin/Documents/LatexOutput/', 'hooks': [function('UpdateSkim')] }
   ]]
+  end
 end
+
+return M

@@ -1,10 +1,5 @@
-require "settings"
 require "plugins"
-require "utils"
+require "settings"
 require "keymappings_wk"
-require "colorscheme"
--- LSP
-require "lsp".init()
 
-require "treesitter"
--- require "config.vimtex"
+require "lsp".config()

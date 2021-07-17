@@ -1,8 +1,11 @@
-require("formatter").setup(
-  {
-    logging = false,
-    filetype = {
-      --[[ javascript = {
+local M = {}
+
+M.config = function()
+  require("formatter").setup(
+    {
+      logging = false,
+      filetype = {
+        --[[ javascript = {
         -- prettier
        function()
           return {
@@ -22,16 +25,19 @@ require("formatter").setup(
         }
       end
     }, ]]
-      lua = {
-        -- luafmt
-        function()
-          return {
-            exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
-            stdin = true
-          }
-        end
+        lua = {
+          -- luafmt
+          function()
+            return {
+              exe = "luafmt",
+              args = {"--indent-count", 2, "--stdin"},
+              stdin = true
+            }
+          end
+        }
       }
     }
-  }
-)
+  )
+end
+
+return M

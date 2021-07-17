@@ -1,7 +1,5 @@
 vim.g.mapleader = " "
 -- Toggle search highlight
-vim.api.nvim_set_keymap("n", "<A-h>", ":set hlsearch!<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<A-w>", ":w<CR>", {noremap = true, silent = true})
 -- Use Ctrl-n/p to navigate in command mode
 vim.api.nvim_set_keymap("c", "<C-n>", "<down>", {noremap = true})
 vim.api.nvim_set_keymap("c", "<C-p>", "<up>", {noremap = true})
@@ -48,11 +46,9 @@ vim.api.nvim_set_keymap(
   {noremap = true, silent = true, expr = true}
 )
 vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {noremap = true, silent = true, expr = true})
-vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {noremap = true, silent = true, expr = true})
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
 
-vim.cmd[[
+vim.cmd [[
   imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
   smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 ]]
@@ -61,31 +57,64 @@ local wk = require "which-key"
 
 local n_map = {
   ["<leader>"] = {
-    ['f'] = {
+    ["f"] = {
       name = "+Telescope",
       f = {"<cmd>Telescope find_files<CR>", "Find file"},
       g = {"<cmd>Telescope live_grep<CR>", "Live grep"},
       b = {"<cmd>Telescope buffers<CR>", "Buffers"},
-      j = {"<cmd>Telescope jumplist<CR>", "Jump list"}
+      j = {"<cmd>Telescope jumplist<CR>", "Jump list"},
+      r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"}
     },
-    ["h"] = {
-      name = "+GitSigns hunk",
-      s = {'<cmd>lua require"gitsigns".stage_hunk()<CR>', "Staged hunk"},
-      u = {'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Unstaged hunk"},
-      r = {'<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk"},
-      R = {'<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer"},
-      p = {'<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk"},
-      b = {'<cmd>lua require"gitsigns".blame_line()<CR>', "Blame line"}
+    ["b"] = {
+      name = "Buffers",
+      j = {"<cmd>BufferPick<cr>", "jump to buffer"},
+      f = {"<cmd>Telescope buffers<cr>", "Find buffer"},
+      w = {"<cmd>BufferWipeout<cr>", "wipeout buffer"},
+      e = {
+        "<cmd>BufferCloseAllButCurrent<cr>",
+        "close all but current buffer"
+      },
+      h = {"<cmd>BufferCloseBuffersLeft<cr>", "close all buffers to the left"},
+      l = {
+        "<cmd>BufferCloseBuffersRight<cr>",
+        "close all BufferLines to the right"
+      },
+      D = {
+        "<cmd>BufferOrderByDirectory<cr>",
+        "sort BufferLines automatically by directory"
+      },
+      L = {
+        "<cmd>BufferOrderByLanguage<cr>",
+        "sort BufferLines automatically by language"
+      }
+    },
+    ["g"] = {
+      name = "+Git",
+      j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
+      k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
+      l = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame"},
+      p = {"<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"},
+      r = {"<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"},
+      R = {"<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"},
+      s = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
+      u = {
+        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+        "Undo Stage Hunk"
+      },
+      o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
+      b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+      c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
+      C = {
+        "<cmd>Telescope git_bcommits<cr>",
+        "Checkout commit(for current file)"
+      }
     },
     e = {"<cmd>NvimTreeToggle<CR>", "Toggle NvimTree"},
     q = {"<cmd>call QuickFixToggle()<CR>", "Toggle QuickFix"},
     o = {"<cmd>SymbolsOutline<CR>", "Toggle Outline"},
-    ["z"] = {
-      name = "+Zen",
-      z = {"<cmd>TZFocus<CR>", "Zen Focus"},
-      m = {"<cmd>TZMinimalist<CR>", "Zen Minimalist"},
-      a = {"<cmd>TZAtaraxis<CR>", "Zen Ataraxis"}
-    },
+    w = {"<cmd>w!<CR>", "Save"},
+    x = {"<cmd>xa<CR>", "Save all and quit"},
+    c = {"<cmd>BufferClose<CR>", "Colse buffer"},
     ["l"] = {
       name = "+Lsp",
       s = {"<cmd>LspStart<CR>", "Start LSP"},
@@ -95,15 +124,13 @@ local n_map = {
       i = {"<cmd>LspInfo<CR>", "LSP info"},
       f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format buffer"}
     },
-    --[[ ["L"] = {
-      name = "+Latex",
-      c = {"<cmd>VimtexCompile<CR>", "Toggle Compilation Mode"},
-      f = {"<cmd>call vimtex#fzf#run()<CR>", "Fzf Find"},
-      i = {"<cmd>VimtexInfo<CR>", "Project Information"},
-      s = {"<cmd>VimtexStop<CR>", "Stop Project Compilation"},
-      t = {"<cmd>VimtexTocToggle<CR>", "Toggle Table Of Content"},
-      v = {"<cmd>VimtexView<CR>", "View PDF"}
-    } ]]
+    ["p"] = {
+      name = "Packer",
+      c = {"<cmd>PackerCompile<cr>", "Compile"},
+      i = {"<cmd>PackerInstall<cr>", "Install"},
+      s = {"<cmd>PackerSync<cr>", "Sync"},
+      u = {"<cmd>PackerUpdate<cr>", "Update"}
+    }
   },
   ["g"] = {
     c = {
@@ -134,13 +161,6 @@ local n_map = {
 }
 
 local v_map = {
-  ["<leader>"] = {
-    h = {
-      name = "+GitSigns hunk",
-      s = {'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Stage hunk"},
-      r = {'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Reset hunk"}
-    }
-  },
   [","] = {
     c = {"<cmd>HopChar1<CR>", "Jump by 1 char"},
     s = {"<cmd>HopPattern<CR>", "Jump by pattern"},
@@ -150,14 +170,6 @@ local v_map = {
   ["gc"] = "Comment"
 }
 
-local o_map = {
-  ["ih"] = {'<cmd>lua require"gitsigns.actions".select_hunk()<CR>', "inner hunk"}
-}
-local x_map = {
-  ["ih"] = {'<cmd>lua require"gitsigns.actions".select_hunk()<CR>', "inner hunk"}
-}
 -- register map
 wk.register(n_map, {mode = "n", prefix = ""})
 wk.register(v_map, {mode = "v", prefix = ""})
-wk.register(o_map, {mode = "o", prefix = ""})
-wk.register(x_map, {mode = "x", prefix = ""})
