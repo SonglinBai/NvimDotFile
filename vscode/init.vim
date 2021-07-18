@@ -1,4 +1,6 @@
-" let g:mapleader = ','
+let g:mapleader = ','
+nmap j gj
+nmap k gk
 if has('win32')
 let g:python3_host_prog = "C:/Users/bsl13/virtualenv/nvim/Scripts"
 set runtimepath = ""
@@ -8,18 +10,10 @@ let g:python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
 endif
 
 set nocompatible
-filetype plugin indent on
-syntax on
-
-" undofile
-set history=1000
-set undofile
-set undodir=~/.vim/undo
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set shiftround
 set smarttab
 set expandtab
 set autoindent
@@ -30,10 +24,6 @@ set ignorecase
 
 set backspace =indent,eol,start
 set hidden
-set laststatus =2
-set display =lastline
-set showmode
-set showcmd
 
 set incsearch
 set hlsearch
@@ -45,17 +35,6 @@ function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
-
-" Install Plugin by vim-plug
-" call plug#begin('~/.vim/plugged')
-" 
-" Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
-" Plug 'machakann/vim-sandwich'
-" Plug 'brglng/vim-im-select'
-" call plug#end()
-
-" on vscode
-" VSCode extension
 
 function! s:manageEditorSize(...)
     let count = a:1
@@ -127,10 +106,6 @@ nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
 nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
-
-" Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
-" xnoremap <expr> <C-/> <SID>vscodeCommentary()
-" nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
 
 nnoremap <silent> <C-w>_ :<C-u>call VSCodeNotify('workbench.action.toggleEditorWidths')<CR>
 
